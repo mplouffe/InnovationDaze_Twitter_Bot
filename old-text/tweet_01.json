@@ -1,7 +1,7 @@
 {
     "tweet": {
         "config": {
-            "numberOfElements": 12,
+            "numberOfElements": 5,
             "sample": "A web app that uses blockchain to decrease development time"
         },
         "elements": [
