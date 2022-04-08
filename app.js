@@ -1,7 +1,6 @@
 require('./config/config');
 const express = require('express');
 const Twitter = require('twitter');
-const { generateTextTweet } = require('./text-tweet-generator/tweet-generator');
 const fs = require('fs');
 
 const app = express();
