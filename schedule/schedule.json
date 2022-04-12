@@ -1,39 +1,35 @@
 {
-    "week": [
-        {
-            "sun": [
+    "days": {
+        "Sun": [
+            {
+                "hour": 12,
+                "minute": 30,
+                "bot": "rndEncounter",
+                "tweetType": "text"
+            }
+        ],
+        "Mon": [
 
-            ]
-        },
-        {
-            "mon": [
+        ],
+        "Tue": [
+            {
+                "hour": 17,
+                "minute": 10,
+                "bot": "rndEncounter",
+                "tweetType": "text"
+            }
+        ],
+        "Wed": [
 
-            ]
-        },
-        {
-            "tues": [
+        ],
+        "Thu": [
 
-            ]
-        },
-        {
-            "wed": [
+        ],
+        "Fri": [
 
-            ]
-        },
-        {
-            "thurs": [
+        ],
+        "Sat": [
 
-            ]
-        },
-        {
-            "fri": [
-
-            ]
-        },
-        {
-            "sat": [
-                
-            ]
-        }
-    ]
+        ]
+    }
 }

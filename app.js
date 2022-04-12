@@ -13,11 +13,60 @@ const client = new Twitter({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
+
 // STEP 1: Fetch schedule json
+let schedule = getSchedule();
+
+// STEP 2: Fetch current date and time
+let date = new Date();
+let dayOfWeek = date.toLocaleDateString('en-us', { weekday: 'short'});
+let hour = date.getHours();
+let minute = date.getMinutes();
+
+console.log("dayOfWeek: " + dayOfWeek);
+console.log("hour: " + hour);
+console.log("minute: " + minute);
+
+// STEP 3: Find the next scheduled tweet
+let nextTweetFound = false;
+let nextTweet = null;
+let currentDayOfWeek = date.toLocaleDateString('en-us', { weekday: 'short'});
+
+while (!nextTweetFound)
+{
+    // STEP 3a: Fetch schedule for current day
+    let currentSchedule = schedule.days[currentDayOfWeek];
+    
+    // STEP 3b: Cycle through current schedule looking for next tweet
+    for (let i = 0; i < currentSchedule.length; i++)
+    {
+        if (currentSchedule[i].hour >= hour)
+        {
+            if (currentSchedule[i].minute > minute)
+            {
+                nextTweetFound = true;
+                nextTweet = currentSchedule[i];
+            }
+        }
+    }
+
+    // STEP 3c: If no tweet found, increment day before next loop
+    if (!nextTweetFound)
+    {
+        date.setDate(date.getDate() + 1);
+        currentDayOfWeek = date.toLocaleDateString('en-us', { weekday: 'short'});
+    }
+}
+
+console.log("Tweet Found!");
+console.log(nextTweet);
+
+
+let initialInterval = 5000;
+
 setInterval(() => {
-    let schedule = getSchedule();
-    console.log(schedule);
-}, 5000);
+    console.log('sanity check');
+}, initialInterval);
 
 
 
