@@ -13,8 +13,8 @@
         ],
         "Tue": [
             {
-                "hour": 17,
-                "minute": 10,
+                "hour": 22,
+                "minute": 20,
                 "bot": "rndEncounter",
                 "tweetType": "text"
             }

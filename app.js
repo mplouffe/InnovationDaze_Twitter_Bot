@@ -6,83 +6,101 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT;
 
-const client = new Twitter({
-    consumer_key: process.env.TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-});
+var waitInterval;
+var currentBot;
+var currentTweetType;
 
+function ScheduleTweet() {
+    // STEP 1: Fetch schedule json
+    let schedule = getSchedule();
 
-// STEP 1: Fetch schedule json
-let schedule = getSchedule();
+    // STEP 2: Fetch current date and time
+    let nextTweetDate = new Date();
+    let currentHour = nextTweetDate.getHours();
+    let currentMinute = nextTweetDate.getMinutes();
 
-// STEP 2: Fetch current date and time
-let date = new Date();
-let dayOfWeek = date.toLocaleDateString('en-us', { weekday: 'short'});
-let hour = date.getHours();
-let minute = date.getMinutes();
+    // console.log("dayOfWeek: " + dayOfWeek);
+    // console.log("hour: " + currentHour);
+    // console.log("minute: " + currentMinute);
 
-console.log("dayOfWeek: " + dayOfWeek);
-console.log("hour: " + hour);
-console.log("minute: " + minute);
+    // STEP 3: Find the next scheduled tweet
+    let nextTweetFound = false;
+    let nextTweet = null;
+    let currentDayOfWeek = nextTweetDate.toLocaleDateString('en-us', { weekday: 'short'});
 
-// STEP 3: Find the next scheduled tweet
-let nextTweetFound = false;
-let nextTweet = null;
-let currentDayOfWeek = date.toLocaleDateString('en-us', { weekday: 'short'});
-
-while (!nextTweetFound)
-{
-    // STEP 3a: Fetch schedule for current day
-    let currentSchedule = schedule.days[currentDayOfWeek];
-    
-    // STEP 3b: Cycle through current schedule looking for next tweet
-    for (let i = 0; i < currentSchedule.length; i++)
+    while (!nextTweetFound)
     {
-        if (currentSchedule[i].hour >= hour)
+        // STEP 3a: Fetch schedule for current day
+        let currentSchedule = schedule.days[currentDayOfWeek];
+
+        // STEP 3b: Cycle through current schedule looking for next tweet
+        for (let i = 0; i < currentSchedule.length; i++)
         {
-            if (currentSchedule[i].minute > minute)
+            if (currentSchedule[i].hour >= currentHour)
             {
-                nextTweetFound = true;
-                nextTweet = currentSchedule[i];
+                if (currentSchedule[i].minute > currentMinute)
+                {
+                    nextTweetFound = true;
+                    nextTweet = currentSchedule[i];
+                }
             }
+        }
+
+        // STEP 3c: If no tweet found, increment day before next loop
+        if (!nextTweetFound)
+        {
+            nextTweetDate.setDate(nextTweetDate.getDate() + 1);
+            currentDayOfWeek = nextTweetDate.toLocaleDateString('en-us', { weekday: 'short'});
         }
     }
 
-    // STEP 3c: If no tweet found, increment day before next loop
-    if (!nextTweetFound)
-    {
-        date.setDate(date.getDate() + 1);
-        currentDayOfWeek = date.toLocaleDateString('en-us', { weekday: 'short'});
-    }
+    // STEP 4: Save info about the tweet to be generated
+    currentBot = nextTweet.bot;
+    currentTweetType = nextTweet.tweetType;
+
+    // STEP 5: Update the nextTweetDate with the new scheduled tweet info
+    nextTweetDate.setHours(nextTweet.hour);
+    nextTweetDate.setMinutes(nextTweet.minute + 1);
+
+    // SETP 6: Calculate the duration to wait before tweeting
+    let currentDate = new Date();
+    waitInterval = nextTweetDate - currentDate;
+
+    setTimeout(BotRun, waitInterval);
 }
 
-console.log("Tweet Found!");
-console.log(nextTweet);
 
+function BotRun() {
+        // STEP 1: Load the Bot
+        let bot = LoadBot(currentBot);
 
-let initialInterval = 5000;
+        // STEP 2: Generate the tweet
+        let tweet = bot.GenerateTweet(currentTweetType)
 
-setInterval(() => {
-    console.log('sanity check');
-}, initialInterval);
+        // STEP 3: Set up credentials
+        let client = GenerateTwitterClient(currentBot);
 
+        // STEP 4: Send Tweet
+        client.post('statuses/update', { status: tweet});
 
+        // STEP 5: Scheule next tweet
+        ScheduleTweet();
+}
 
-// setInterval(() => {
-//     generateTextTweet()
-//         .then((status) => {
-//             console.log(status);
-//             return client.post('statuses/update', { status: status });
-//         })
-//         .then((tweet) => {
-//             console.log('Successful tweet!')
-//         })
-//         .catch((err) => {
-//             console.log('ERR!: ', err);
-//         });
-// }, 28800000);
+function GenerateTwitterClient(currentBot) {
+    let client;
+    switch (currentBot) {
+        case "rndEncounter":
+            client = new Twitter({
+                consumer_key: process.env.RND_ENCOUNTER_TWITTER_CONSUMER_KEY,
+                consumer_secret: process.env.RND_ENCOUNTER_TWITTER_CONSUMER_SECRET,
+                access_token_key: process.env.RND_ENCOUNTER_TWITTER_ACCESS_TOKEN_KEY,
+                access_token_secret: process.env.RND_ENCOUNTER_TWITTER_ACCESS_TOKEN_SECRET
+            });
+            break;
+    }
+    return client;
+}
 
 app.get('/', (req, res) => res.send('Bot is running...'));
 
