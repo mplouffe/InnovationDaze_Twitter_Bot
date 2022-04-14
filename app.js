@@ -1,7 +1,11 @@
 require('./config/config');
+
+const Bot = require('./bots/bots');
 const express = require('express');
 const Twitter = require('twitter');
 const fs = require('fs');
+
+const RandomTechBot = require('./bots/rndTechBot/randomTechBot');
 
 const app = express();
 const PORT = process.env.PORT;
@@ -15,19 +19,14 @@ function ScheduleTweet() {
     let schedule = getSchedule();
 
     // STEP 2: Fetch current date and time
-    let nextTweetDate = new Date();
-    let currentHour = nextTweetDate.getHours();
-    let currentMinute = nextTweetDate.getMinutes();
-
-    // console.log("dayOfWeek: " + dayOfWeek);
-    // console.log("hour: " + currentHour);
-    // console.log("minute: " + currentMinute);
+    let currentDate = new Date();
 
     // STEP 3: Find the next scheduled tweet
     let nextTweetFound = false;
     let nextTweet = null;
-    let currentDayOfWeek = nextTweetDate.toLocaleDateString('en-us', { weekday: 'short'});
+    let currentDayOfWeek = currentDate.toLocaleDateString('en-us', { weekday: 'short'});
 
+    let nextTweetDate = new Date();
     while (!nextTweetFound)
     {
         // STEP 3a: Fetch schedule for current day
@@ -36,13 +35,11 @@ function ScheduleTweet() {
         // STEP 3b: Cycle through current schedule looking for next tweet
         for (let i = 0; i < currentSchedule.length; i++)
         {
-            if (currentSchedule[i].hour >= currentHour)
+            nextTweetDate.setHours(currentSchedule[i].hour, currentSchedule[i].minute, 0);
+            if (currentDate < nextTweetDate)
             {
-                if (currentSchedule[i].minute > currentMinute)
-                {
-                    nextTweetFound = true;
-                    nextTweet = currentSchedule[i];
-                }
+                nextTweetFound = true;
+                nextTweet = currentSchedule[i];
             }
         }
 
@@ -55,7 +52,7 @@ function ScheduleTweet() {
     }
 
     // STEP 4: Save info about the tweet to be generated
-    currentBot = nextTweet.bot;
+    currentBot = Bot.StringToEnum(nextTweet.bot);
     currentTweetType = nextTweet.tweetType;
 
     // STEP 5: Update the nextTweetDate with the new scheduled tweet info
@@ -63,40 +60,58 @@ function ScheduleTweet() {
     nextTweetDate.setMinutes(nextTweet.minute + 1);
 
     // SETP 6: Calculate the duration to wait before tweeting
-    let currentDate = new Date();
     waitInterval = nextTweetDate - currentDate;
+
+    waitInterval = 5000;
 
     setTimeout(BotRun, waitInterval);
 }
 
-
 function BotRun() {
-        // STEP 1: Load the Bot
-        let bot = LoadBot(currentBot);
+    // STEP 1: Load the Bot
+    let bot = LoadBot(currentBot);
 
-        // STEP 2: Generate the tweet
-        let tweet = bot.GenerateTweet(currentTweetType)
+    // STEP 2: Generate the tweet
+    let tweet = bot.GenerateTweet(currentTweetType)
 
-        // STEP 3: Set up credentials
-        let client = GenerateTwitterClient(currentBot);
+    // STEP 3: Set up credentials
+    let client = GenerateTwitterClient(currentBot);
 
-        // STEP 4: Send Tweet
-        client.post('statuses/update', { status: tweet});
+    // STEP 4: Send Tweet
+    client.post('statuses/update', { status: tweet});
 
-        // STEP 5: Scheule next tweet
-        ScheduleTweet();
+    // STEP 5: Scheule next tweet
+    ScheduleTweet();
+}
+
+function LoadBot(currentBot) {
+    let bot;
+    switch (currentBot) {
+        case Bot.RandomTechBot:
+            bot = new RandomTechBot();
+            break;
+    }
+    return bot;
 }
 
 function GenerateTwitterClient(currentBot) {
     let client;
     switch (currentBot) {
-        case "rndEncounter":
+        case Bot.RndEncounter:
             client = new Twitter({
                 consumer_key: process.env.RND_ENCOUNTER_TWITTER_CONSUMER_KEY,
                 consumer_secret: process.env.RND_ENCOUNTER_TWITTER_CONSUMER_SECRET,
                 access_token_key: process.env.RND_ENCOUNTER_TWITTER_ACCESS_TOKEN_KEY,
                 access_token_secret: process.env.RND_ENCOUNTER_TWITTER_ACCESS_TOKEN_SECRET
             });
+            break;
+        case Bot.RandomTechBot:
+            client = {};
+            client.post = function(type, tweet) {
+                console.log("client post called...");
+                console.log("tweet content: ");
+                console.log(tweet.status);
+            }
             break;
     }
     return client;
@@ -105,6 +120,8 @@ function GenerateTwitterClient(currentBot) {
 app.get('/', (req, res) => res.send('Bot is running...'));
 
 app.listen(PORT, () => console.log(`Twitter Bot Scheduler is up and running on ${PORT}`));
+
+ScheduleTweet();
 
 function getSchedule() {
     try {

@@ -12,15 +12,15 @@
 
         ],
         "Tue": [
-            {
-                "hour": 22,
-                "minute": 20,
-                "bot": "rndEncounter",
-                "tweetType": "text"
-            }
+
         ],
         "Wed": [
-
+            {
+                "hour": 22,
+                "minute": 16,
+                "bot": "RandomTechBot",
+                "tweetType": "text"
+            }
         ],
         "Thu": [
 
