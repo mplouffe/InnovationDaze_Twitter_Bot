@@ -1,6 +1,4 @@
-## Node.js Innovation Daze Twitter Bot
+## Node.js Twitter Bot Framework
 
-#### v 1.0.0 - Branching from Rnd Encounter Bot
-Creating a basic version of the bot using the same framework as Rnd Encounter
-Will look at improving the structure next
-Never did finish the image generation thing... Art Twitter Bot?
+#### v 1.0.0 - Basic Bot Framework
+Creating a framework to host the logic and scheduling for multiple Twitter bots.

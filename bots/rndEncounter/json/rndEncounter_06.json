@@ -1,0 +1,165 @@
+{
+    "tweet": {
+        "config": {
+            "numberOfElements": 12
+        },
+        "elements": [
+            [
+                "Your party enters the "
+            ],
+            [
+                "Laughing ",
+                "Howling ",
+                "Sleeping ",
+                "Lurking ",
+                "Peaking ",
+                "Napping ",
+                "Dreaming ",
+                "Smoking ",
+                "Flaming ",
+                "Dying ",
+                "Regretful ",
+                "Mornful ",
+                "Enraged ",
+                "Endangered ",
+                "Wild ",
+                "Drunk ",
+                "Obnoxious ",
+                "Entitled ",
+                "Fancy ",
+                "Regal "
+            ],
+            [
+                "Hyhena",
+                "Aligator",
+                "Crocodile",
+                "Boar",
+                "Pig",
+                "Cow",
+                "Sheep",
+                "Owl",
+                "Turnip",
+                "Cat",
+                "Dog",
+                "Wolf",
+                "Fox",
+                "Beagle"
+            ],
+            [
+                " Inn",
+                " Tavern"
+            ],
+            [
+                ".\n"
+            ],
+            [
+                "You see "
+            ],
+            [
+                "a tall",
+                "a short",
+                "a wide",
+                "a stumpy",
+                "a big",
+                "a large",
+                "an evolved",
+                "a holy",
+                "an unholy",
+                "an evil",
+                "an unnatural",
+                "an immortal",
+                "a supernatural",
+                "a demonic",
+                "a horse-sized",
+                "100 duck sized",
+                "a homeless",
+                "a well to do",
+                "a physically active",
+                "a smoking hot",
+                "a fat",
+                "a fit",
+                "a hairless",
+                "a mostly bald",
+                "an undead",
+                "a zombie",
+                "a domesticated",
+                "a house broken",
+                "a slightly racist",
+                "a depressed",
+                "an emo",
+                "a manic",
+                "a sedated",
+                "a drugged",
+                "a stoned",
+                "a horny"
+            ],
+            [
+                " male ",
+                " female "
+            ],
+            [
+                "human ",
+                "orc ",
+                "elf ",
+                "Alf ",
+                "dolphin ",
+                "wookie",
+                "centaur ",
+                "talking lion ",
+                "chipmunk ",
+                "cyborg ",
+                "community activist ",
+                "public speaker ",
+                "time traveller ",
+                "competitive eater ",
+                "compulsive liar ",
+                "gambling addict ",
+                "neo-Nazi ",
+                "clone of Hitler ",
+                "ghost of Ben Franklin ",
+                "widow of the Civil War ",
+                "mail order bride "
+            ],
+            [
+                "call",
+                "beckon",
+                "wave at",
+                "gesture to",
+                "wink at",
+                "point at",
+                "insult",
+                "rudely gesture at",
+                "laugh at",
+                "spit towards",
+                "racistly glare at",
+                "sexting",
+                "reveal too much to",
+                "make eye contact with",
+                "think about",
+                "blow kisses at",
+                "make a pass at",
+                "flip the bird at",
+                "flick boogers towards",
+                "judgingly snort at",
+                "expose themself to"
+            ],
+            [
+                " you from "
+            ],
+            [
+                "beside the fire.",
+                "by the ba.r",
+                "near the back.",
+                "outside the bathroom.",
+                "beside the doo.r",
+                "a table to your left.",
+                "across the room.",
+                "on a stage.",
+                "inside a cage.",
+                "near the kitchen.",
+                "the floor by the door.",
+                "hearthside."
+            ]
+        ]
+    }
+}

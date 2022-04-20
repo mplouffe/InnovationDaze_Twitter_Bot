@@ -1,0 +1,142 @@
+{
+    "tweet": {
+        "config": {
+            "numberOfElements": 15
+        },
+        "elements": [
+            [
+                "Letttri",
+                "Sanegar",
+                "Aldcar",
+                "Thysa",
+                "Fredcome",
+                "Garrich",
+                "Meritheodleof",
+                "Macrid",
+                "Ethelgorma",
+                "Carrich",
+                "Gar",
+                "Samton",
+                "Grimcuth",
+                "Andneth",
+                "Doclay",
+                "Acarnath",
+                "Ferd-chris",
+                "Gardste",
+                "Seph-an",
+                "Rage"
+            ],
+            [
+                " the bard "
+            ],
+            [
+                "plays",
+                "sings",
+                "reads",
+                "writes",
+                "tells",
+                "weaves"
+            ],
+            [
+                " a "
+            ],
+            [
+                "song",
+                "tale",
+                "story",
+                "spell",
+                "dance"
+            ],
+            [
+                " of "
+            ],
+            [
+                "TOTAL",
+                "COMPLETE",
+                "INFECTED",
+                "POISIONOUS",
+                "INFECTIOUS",
+                "SPREADING",
+                "SEXUAL",
+                "HOPEFUL",
+                "OPTIMISTIC",
+                "PESIMISTIC"
+            ],
+            [
+                " DISPAIR",
+                " ENNUI",
+                " UNEMPLOYMENT",
+                " LOWERED EXPECTATIONS",
+                " HEALING",
+                " JOB SECURITY",
+                " PASSIVE INTEREST",
+                " PASSIVE AGGRESSION",
+                " FIRST DATES",
+                " JUNIOR PROM",
+                " HAND HOLDING",
+                " FRIEND ZONE",
+                " PASSION",
+                " LUST",
+                " HUNGER",
+                " GREED",
+                " KNOWLEDGE"
+            ],
+            [
+                ".\n"
+            ],
+            [
+                "All enemies are ",
+                "All allies are ",
+                "Target enemy is ",
+                "Target ally is "
+            ],
+            [
+                "stoned",
+                "unable to cope",
+                "taking a sick day",
+                "having 'me' time",
+                "going home early",
+                "eating vegan",
+                "having 'problems'",
+                "in serious pain",
+                "having flashbacks",
+                "incapacitated",
+                "tripping the light",
+                "exploring inner space",
+                "having the feels",
+                "collecting themselves",
+                "reflecting on time",
+                "growing older",
+                "slowly dying",
+                "getting lucky",
+                "feeling better",
+                "feeling worse",
+                "having issues",
+                "asking questions",
+                "jumping the gun",
+                "enjoying that",
+                "remembering a better time",
+                "acting their age",
+                "producing a play",
+                "confused",
+                "no longer playing",
+                "quitting the game"
+            ],
+            [
+                " for "
+            ],
+            [ 1,2,3,4,5,6,7,8,9 ],
+            [ 1,2,3,4,5,6,7,8,9,0 ],
+            [
+                " turns.",
+                " days.",
+                " hours.",
+                " minutes.",
+                " seconds.",
+                " days and nights.",
+                " rounds.",
+                " player moves."
+            ]
+        ]
+    }
+}

@@ -6,6 +6,9 @@ const Twitter = require('twitter');
 const fs = require('fs');
 
 const RandomTechBot = require('./bots/rndTechBot/randomTechBot');
+const RndEncounterBot = require('./bots/rndEncounter/rndEnounterBot');
+
+const { OutArtBot } = require('./bots/bots');
 
 const app = express();
 const PORT = process.env.PORT;
@@ -46,6 +49,7 @@ function ScheduleTweet() {
         // STEP 3c: If no tweet found, increment day before next loop
         if (!nextTweetFound)
         {
+            nextTweetDate.setHours(0, 0, 0);
             nextTweetDate.setDate(nextTweetDate.getDate() + 1);
             currentDayOfWeek = nextTweetDate.toLocaleDateString('en-us', { weekday: 'short'});
         }
@@ -72,7 +76,7 @@ function BotRun() {
     let bot = LoadBot(currentBot);
 
     // STEP 2: Generate the tweet
-    let tweet = bot.GenerateTweet(currentTweetType)
+    let tweet = bot.generateTweet(currentTweetType)
 
     // STEP 3: Set up credentials
     let client = GenerateTwitterClient(currentBot);
@@ -86,9 +90,16 @@ function BotRun() {
 
 function LoadBot(currentBot) {
     let bot;
+    console.log(currentBot);
     switch (currentBot) {
         case Bot.RandomTechBot:
             bot = new RandomTechBot();
+            break;
+        case Bot.RndEncounter:
+            bot = new RndEncounterBot();
+            break;
+        case Bot.OutArtBot:
+            bot = new OutArtBot();
             break;
     }
     return bot;
@@ -96,6 +107,14 @@ function LoadBot(currentBot) {
 
 function GenerateTwitterClient(currentBot) {
     let client;
+    client = {};
+    client.post = function(type, tweet) {
+        console.log("client post called...");
+        console.log("tweet content: ");
+        console.log(tweet.status);
+    };
+    return client;
+
     switch (currentBot) {
         case Bot.RndEncounter:
             client = new Twitter({
@@ -106,22 +125,23 @@ function GenerateTwitterClient(currentBot) {
             });
             break;
         case Bot.RandomTechBot:
-            client = {};
-            client.post = function(type, tweet) {
-                console.log("client post called...");
-                console.log("tweet content: ");
-                console.log(tweet.status);
-            }
+            client = new Twitter({
+                consumer_key: process.env.RND_TECH_TWITTER_CONSUMER_KEY,
+                consumer_secret: process.env.RND_TECH_TWITTER_CONSUMER_SECRET,
+                access_token_key: process.env.RND_TECH_TWITTER_ACCESS_TOKEN_KEY,
+                access_token_secret: process.env.RND_TECH_TWITTER_ACCESS_TOKEN_SECRET
+            });
             break;
+        case Bot.OutArtBot:
+            client = new Twitter({
+                consumer_key: process.env.OUT_ART_TWITTER_CONSUMER_KEY,
+                consumer_secret: process.env.OUT_ART_TWITTER_CONSUMER_SECRET,
+                access_token_key: process.env.OUT_ART_TWITTER_ACCESS_TOKEN_KEY,
+                access_token_secret: process.env.OUT_ART_TWITTER_ACCESS_TOKEN_SECRET
+            });
     }
     return client;
 }
-
-app.get('/', (req, res) => res.send('Bot is running...'));
-
-app.listen(PORT, () => console.log(`Twitter Bot Scheduler is up and running on ${PORT}`));
-
-ScheduleTweet();
 
 function getSchedule() {
     try {
@@ -132,3 +152,9 @@ function getSchedule() {
         console.log('Error reading schedule.json: ' + err);
     }
 }
+
+app.get('/', (req, res) => res.send('Bot is running...'));
+
+app.listen(PORT, () => console.log(`Twitter Bot Scheduler is up and running on ${PORT}`));
+
+ScheduleTweet();

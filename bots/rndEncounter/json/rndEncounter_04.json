@@ -1,0 +1,185 @@
+{
+    "tweet": {
+        "config": {
+            "numberOfElements": 19
+        },
+        "elements": [
+            [
+                "Your party "
+            ],
+            [
+                "walks ",
+                "crawls",
+                "slinks",
+                "creeps",
+                "sneaks",
+                "moves"
+            ],
+            [
+                " through the "
+            ],
+            [
+                "Forrest",
+                "Swamp",
+                "Land",
+                "Cave",
+                "Tunnel",
+                "Cavern",
+                "Maze",
+                "Woods",
+                "Tomb",
+                "Graveyard",
+                "Market",
+                "Village",
+                "City",
+                "Town",
+                "Castle",
+                "Moat",
+                "Island",
+                "Cliffs",
+                "Fog",
+                "Shadows"
+            ],
+            [
+                " of "
+            ],
+            [
+                "Dirty ",
+                "Murky ",
+                "Dangerous ",
+                "Stinky ",
+                "Zombie ",
+                "Undead ",
+                "Holy ",
+                "Unholy ",
+                "Righteous ",
+                "Zen ",
+                "Buddhist ",
+                "Living ",
+                "Dying ",
+                "Cliche ",
+                "Foreign ",
+                "Ancient",
+                "New Wave ",
+                "80's ",
+                "90's ",
+                "Angry ",
+                "Serene ",
+                "Tranquil ",
+                "Enraged "
+            ],
+            [
+                "Chivalry",
+                "Hope",
+                "Death",
+                "Frenchmen",
+                "Americans",
+                "Germans",
+                "Apathy",
+                "Ennui",
+                "Emotion",
+                "Thought",
+                "Nightmares",
+                "Dreams",
+                "Metal",
+                "Song Lyrics",
+                "Diamonds",
+                "Lost Souls",
+                "Pirates",
+                "Thieves",
+                "Elves",
+                "Orcs",
+                "Goblins",
+                "Skeletons",
+                "Rats",
+                "Spiders",
+                "Rabid Dogs"
+            ],
+            [
+                ".\n"
+            ],
+            [
+                "You consume your "
+            ],
+            [
+                "bowl",
+                "cauldron",
+                "vial",
+                "glass",
+                "mug",
+                "travel mug",
+                "sippy cup",
+                "Big Gulp",
+                "box",
+                "carton",
+                "shotglass",
+                "beer stein"
+            ],
+            [
+                " of "
+            ],
+            [
+                "Eggy ",
+                "Protien ",
+                "Mystery ",
+                "Disgusting ",
+                "Satisfying ",
+                "Filling ",
+                "Vegan ",
+                "Artifical ",
+                "All Natural ",
+                "Grain Fed ",
+                "Organic ",
+                "Etically Traded ",
+                "Non-GMO ",
+                "Half-Soy ",
+                "Chocolate ",
+                "Vanilla ",
+                "Strawberry ",
+                "Smoked ",
+                "Business ",
+                "Hedge Fund ",
+                "Money ",
+                "Greed ",
+                "Lust ",
+                "Healing "
+            ],
+            [
+                "Liquid",
+                "Brew",
+                "Salve",
+                "Cream",
+                "Jelly",
+                "Meat Substitute",
+                "Cheese",
+                "Shake",
+                "Smoothie",
+                "Desert Treat",
+                "Matter"
+            ],
+            [
+                ".\n"
+            ],
+            [
+                "Add +"
+            ],
+            [ 1,2,3,4,5,6,7,8,9 ],
+            [ 1,2,3,4,5,6,7,8,9 ],
+            [
+                " to "
+            ],
+            [
+                "intelligence.",
+                "charm.",
+                "irony.",
+                "sense of entitlement.",
+                "ennui.",
+                "apathy.",
+                "general malaise.",
+                "shopping trip.",
+                "recovery.",
+                "stamina."
+            ]
+        ]
+    }
+}

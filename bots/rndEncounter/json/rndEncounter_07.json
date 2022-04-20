@@ -1,0 +1,110 @@
+{
+    "tweet": {
+        "config": {
+            "numberOfElements": 14
+        },
+        "elements": [
+            [
+                "You "
+            ],
+            [
+                "attack",
+                "lunge at",
+                "stab",
+                "shiv",
+                "shoot",
+                "hit",
+                "thrust through",
+                "slap",
+                "jab",
+                "uppercut",
+                "fireball",
+                "lightning bolt",
+                "ice spike",
+                "poke",
+                "belittle",
+                "emotionally wound"
+            ],
+            [
+                " the "
+            ],
+            [
+                "DARK ",
+                "UNDEAD ",
+                "SMELLY ",
+                "FARTING ",
+                "CRYING ",
+                "WAILING ",
+                "HOLY ",
+                "FIREY ",
+                "ICY ",
+                "WINDY ",
+                "ROCKY ",
+                "DIRTY ",
+                "UNUSUALLY CLEAN ",
+                "GENDER NEUTRAL ",
+                "UNHOLY "
+            ],
+            [
+                "BAT",
+                "CAT",
+                "ZOMBIE",
+                "MONSTER",
+                "MUMMY",
+                "SLIME",
+                "WITCH",
+                "SKELETON",
+                "ELF",
+                "ORC",
+                "GOBLIN",
+                "SPRITE",
+                "SPIRIT",
+                "GHOST",
+                "PHANTASM",
+                "WIZARD",
+                "WARLOCK",
+                "SORCERER"
+            ],
+            [
+                "!!!\n"
+            ],
+            [
+                "Terrible ",
+                "MASSIVE ",
+                "Crucial ",
+                "Critical ",
+                "Sloppy ",
+                "Glancing ",
+                "Perfect ",
+                "Well timed ",
+                "First ",
+                "Final ",
+                "Killing "
+            ],
+            [
+                "blow",
+                "strike",
+                "hit",
+                "attack"
+            ],
+            [
+                "!!!\n"
+            ],
+            [
+                "You "
+            ],
+            [
+                "deal ",
+                "attack for ",
+                "hit for ",
+                "cause ",
+                "inflict "
+            ],
+            [ 1,2,3,4,5,6,7,8,9 ],
+            [ 1,2,3,4,5,6,7,8,9,0 ],
+            [
+                " damage!!!"
+            ]
+        ]
+    }
+}

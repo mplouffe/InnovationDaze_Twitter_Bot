@@ -3,6 +3,7 @@ class Bot {
 
     static RndEncounter = new Bot("RndEncounter");
     static RandomTechBot = new Bot("RandomTechBot");
+    static OutArtBot = new Bot("OutArtBot");
 
     constructor(name) {
         this.name = name;
@@ -16,6 +17,9 @@ class Bot {
                 break;
             case "RndEncounter":
                 botEnum = Bot.RndEncounter;
+                break;
+            case "OutArt":
+                botEnum = Bot.OutArtBot;
                 break;
         }
         return botEnum;

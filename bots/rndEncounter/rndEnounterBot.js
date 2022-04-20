@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-class RandomTechBot {
+class RndEncounterBot {
     generateTweet(tweetType) {
         let tweet;
         switch (tweetType) {
@@ -12,14 +12,13 @@ class RandomTechBot {
     }
 
     generateTextTweet() {
-        let tweetFormat = 1;
-        let tweetPath = `./bots/rndTechBot/json/techBot_0${tweetFormat}.json`;
+        let tweetFormat = Math.floor(Math.random() * 9) + 1;
+        let tweetPath = `./bots/rndEncounter/json/rndEncounter_0${tweetFormat}.json`;
+
         try {
-            let rawData = fs.readFileSync(tweetPath, 'utf8');
-    
-            let jsonData = JSON.parse(rawData);
+            let rawTweetData = fs.readFileSync(tweetPath, 'utf-8');
+            let jsonData = JSON.parse(rawTweetData);
             let elements = jsonData.tweet.elements;
-    
             let tweetText = "";
             elements.forEach(element => {
                 if(element.length === 1) {
@@ -29,13 +28,12 @@ class RandomTechBot {
                     tweetText += element[pickedIndex];
                 }
             });
-
             return tweetText;
-        }
+        } 
         catch (err) {
-            console.log("Error generating text tweet in RandomTechBot: " + err);
+            console.log("Error generating text tweet in RndEncounter: " + err);
         }
     }
 };
 
-module.exports = RandomTechBot;
+module.exports = RndEncounterBot;

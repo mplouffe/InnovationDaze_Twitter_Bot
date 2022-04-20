@@ -1,0 +1,145 @@
+{
+    "tweet": {
+        "config": {
+            "numberOfElements": 19,
+            "sample": "The BULKY BEAST is killed!!!\nGain 12 EXP.\nGain 45 Bronze.\nFound 3 Power Beans."
+        },
+        "elements": [
+            [
+                "The "
+            ],
+            [
+                "BULKY ",
+                "THICK ",
+                "STOCKY ",
+                "FOUL ",
+                "MISUNDERSTOOD ",
+                "MUMBLING "
+            ],
+            [
+                "APPARATION",
+                "BEAST",
+                "BOGEYMAN",
+                "CAT",
+                "BAT",
+                "CLOCK",
+                "CONJURER",
+                "CHANGELING",
+                "CREATURE",
+                "CROW",
+                "DEMON",
+                "DOG",
+                "DWARF",
+                "DRAGON",
+                "ELF",
+                "ELK",
+                "FAIRY",
+                "GHOST",
+                "GNOME",
+                "GOBLIN",
+                "HAG",
+                "HORROR",
+                "IMP",
+                "MAGICIAN",
+                "MONSTER",
+                "NECROMANCER",
+                "OGRE",
+                "OWL",
+                "PIXIE",
+                "WEREWOLF",
+                "SNAKE",
+                "SORCERER",
+                "SKELETON",
+                "ORC",
+                "MUMMY",
+                "INSECT",
+                "UNICORN",
+                "VAMPIRE"
+            ],
+            [
+                " is "
+            ],
+            [
+                "killed",
+                "destroyed",
+                "buried",
+                "vanquished",
+                "eliminated",
+                "murdered",
+                "dead",
+                "slain",
+                "obliterated"
+            ],
+            [
+                "!!!\n"
+            ],
+            [
+                "Gain "
+            ],
+            [ 1,2,3,4,5,6,7,8,9 ],
+            [ 1,2,3,4,5,6,7,8,9,0 ],
+            [
+                " EXP.\n"
+            ],
+            [
+                "Gain "
+            ],
+            [ 1,2,3,4,5,6,7,8,9 ],
+            [ 1,2,3,4,5,6,7,8,9,0 ],
+            [
+                " Bronze",
+                " Silver",
+                " Gold",
+                " Diamond",
+                " Gil",
+                " Rupees",
+                " Dollars",
+                " Proofs of Purchase",
+                " Loyalty Points",
+                " Reward Miles",
+                " Slimy Coins"
+            ],
+            [
+                ".\n"
+            ],
+            [
+                "Found "
+            ],
+            [ 2,3,4,5,6 ],
+            [
+                " Vintage",
+                " Lucky",
+                " Chaotic",
+                " Power",
+                " Retro",
+                " 90's",
+                " 80's",
+                " Plazma",
+                " Sci-Fi ",
+                " Low Budget",
+                " High Caffine",
+                " Tasteful",
+                " Elegant",
+                " Collector's",
+                " Ornate",
+                " Gold"
+            ],
+            [
+                " Potions.",
+                " Beads.",
+                " Jewels.",
+                " Crystals.",
+                " Beans.",
+                " Seeds.",
+                " Plants.",
+                " Gems.",
+                " Sauces.",
+                " Books.",
+                " Items.",
+                " Boxes.",
+                " Cases.",
+                " Buttons."
+            ]
+        ]
+    }
+}

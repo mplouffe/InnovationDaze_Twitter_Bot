@@ -2,34 +2,143 @@
     "days": {
         "Sun": [
             {
-                "hour": 12,
-                "minute": 30,
-                "bot": "rndEncounter",
+                "hour": 9,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 17,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 22,
+                "minute": 0,
+                "bot": "RndEncounter",
                 "tweetType": "text"
             }
         ],
         "Mon": [
-
+            {
+                "hour": 9,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 17,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 22,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            }
         ],
         "Tue": [
-
+            {
+                "hour": 9,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 17,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 22,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            }
         ],
         "Wed": [
             {
+                "hour": 9,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 17,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
                 "hour": 22,
-                "minute": 16,
-                "bot": "RandomTechBot",
+                "minute": 0,
+                "bot": "RndEncounter",
                 "tweetType": "text"
             }
         ],
         "Thu": [
-
+            {
+                "hour": 9,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 17,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 22,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            }
         ],
         "Fri": [
-
+            {
+                "hour": 9,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 17,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 22,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            }
         ],
         "Sat": [
-
+            {
+                "hour": 9,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 17,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 22,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            }
         ]
     }
 }
