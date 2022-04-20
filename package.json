@@ -11,8 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+    "hyperjs": "^1.0.2",
     "jimp": "^0.16.1",
-    "pngjs-image": "^0.11.7",
+    "node-html-to-image": "^3.2.4",
     "twitter": "^1.7.1"
   }
 }

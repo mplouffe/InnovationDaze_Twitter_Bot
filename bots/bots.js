@@ -18,7 +18,7 @@ class Bot {
             case "RndEncounter":
                 botEnum = Bot.RndEncounter;
                 break;
-            case "OutArt":
+            case "OutArtBot":
                 botEnum = Bot.OutArtBot;
                 break;
         }

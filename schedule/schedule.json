@@ -55,6 +55,12 @@
             },
             {
                 "hour": 22,
+                "minute": 30,
+                "bot": "OutArtBot",
+                "tweetType": "image"
+            },
+            {
+                "hour": 24,
                 "minute": 0,
                 "bot": "RndEncounter",
                 "tweetType": "text"

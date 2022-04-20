@@ -7,8 +7,7 @@ const fs = require('fs');
 
 const RandomTechBot = require('./bots/rndTechBot/randomTechBot');
 const RndEncounterBot = require('./bots/rndEncounter/rndEnounterBot');
-
-const { OutArtBot } = require('./bots/bots');
+const OutArtBot = require('./bots/outArtBot/outArtBot');
 
 const app = express();
 const PORT = process.env.PORT;
@@ -36,7 +35,7 @@ function ScheduleTweet() {
         let currentSchedule = schedule.days[currentDayOfWeek];
 
         // STEP 3b: Cycle through current schedule looking for next tweet
-        for (let i = 0; i < currentSchedule.length; i++)
+        for (let i = 0; i < currentSchedule.length && !nextTweetFound; i++)
         {
             nextTweetDate.setHours(currentSchedule[i].hour, currentSchedule[i].minute, 0);
             if (currentDate < nextTweetDate)
@@ -76,21 +75,54 @@ function BotRun() {
     let bot = LoadBot(currentBot);
 
     // STEP 2: Generate the tweet
-    let tweet = bot.generateTweet(currentTweetType)
+    let tweet = bot.generateTweet(currentTweetType, resolvedCallback)
 
     // STEP 3: Set up credentials
     let client = GenerateTwitterClient(currentBot);
 
     // STEP 4: Send Tweet
-    client.post('statuses/update', { status: tweet});
+    if (currentTweetType === "text") {
+        client.post('statuses/update', { status: tweet}, function(error, tweet, response) {
+            if (error) {
+              console.log(`Error generating image tweet: ${error}`)
+            } else {
+              console.log("Successful tweet!")
+            }
+        });
+    }
+    else if (currentTweetType === "image") {
+
+    }
+
 
     // STEP 5: Scheule next tweet
     ScheduleTweet();
 }
 
+function resolvedCallback(tweet) {
+    client.post("media/upload", { media: tweet.image }, function(error, media, response) {
+        if (error) {
+          console.log(`Error uploading media to Twitter: ${error}`);
+        }
+        else {
+          let status = {
+            status: tweet.title,
+            media_ids: media.media_id_string
+          };
+       
+          client.post("statuses/update", status, function(error, tweet, response) {
+            if (error) {
+              console.log(`Error generating image tweet: ${error}`)
+            } else {
+              console.log("Successfully tweeted an image!")
+            }
+          });
+        }
+      });
+}
+
 function LoadBot(currentBot) {
     let bot;
-    console.log(currentBot);
     switch (currentBot) {
         case Bot.RandomTechBot:
             bot = new RandomTechBot();
@@ -108,10 +140,21 @@ function LoadBot(currentBot) {
 function GenerateTwitterClient(currentBot) {
     let client;
     client = {};
-    client.post = function(type, tweet) {
-        console.log("client post called...");
-        console.log("tweet content: ");
-        console.log(tweet.status);
+    client.post = function(type, tweet, callback) {
+        if (type === "media/upload") {
+            console.log("uploading media...");
+            console.log(tweet.media);
+            let media = {
+                media_id_string: "media_id_string"
+            };
+            callback(null, media, null);
+        }
+        else if (type === "statuses/update") {
+            console.log("client post called...");
+            console.log("tweet content: ");
+            console.log(tweet.status);
+            callback(null, tweet, null);
+        }
     };
     return client;
 
