@@ -1,6 +1,7 @@
 const fs = require('fs');
 
 const { generateHtmlImage } = require('./tools/html_image_generation');
+const { generateCollageImage } = require('./tools/collage_generator');
 
 class OutArtBot {
     generateTweet(tweetType) {
@@ -10,6 +11,9 @@ class OutArtBot {
                 let image = this.generateImage();
                 let title = this.generateTitle();
                 tweet = { image, title };
+                break;
+            case "collage":
+                generateCollageImage();
                 break;
         }
         return tweet;

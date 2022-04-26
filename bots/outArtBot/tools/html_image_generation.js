@@ -95,7 +95,7 @@ const generateHtmlImage = (tweetCallback) => {
 
     let htmlNode = compile(complexTag);
 
-    let image = await nodeHtmlToImage({
+    nodeHtmlToImage({
         output: './artifacts/outArtBot/image.png',
         html: htmlNode
         })
