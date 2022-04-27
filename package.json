@@ -11,10 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
-    "free-google-images": "^1.2.1",
     "hyperjs": "^1.0.2",
     "jimp": "^0.16.1",
     "node-html-to-image": "^3.2.4",
+    "picsum-photos": "^3.0.10",
     "twitter": "^1.7.1"
   }
 }

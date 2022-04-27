@@ -1,49 +1,38 @@
-const google_images = require("free-google-images");
 const Jimp = require('jimp');
 
 var imageBase;
 var imageArray = [];
 
 const fetchImage = () => {
-    new Jimp(256, 256, (err, image) => {
+    new Jimp(500, 500, (err, image) => {
         imageBase = image;
     });
-
-    google_images.searchRandom("blah", true)
-        .then((result) => {
-            return Jimp.read(result.image.url);
+    
+    Jimp.read('https://picsum.photos/500/500')
+        .then((image) => {
+            imageArray.push(image);
+            return Jimp.read('https://picsum.photos/500/500');
         })
         .then((image) => {
             imageArray.push(image);
-            return google_images.searchRandom("blarg", true);
-        })
-        .then((result) => {
-            return Jimp.read(result.image.url);
-        })
-        .then((image) => {
-            imageArray.push(image);
-            return google_images.searchRandom("bleep", true);
-        })
-        .then((result) => {
-            return Jimp.read(result.image.url);
+            return Jimp.read('https://picsum.photos/500/500');
         })
         .then((image) => {
             imageArray.push(image);
 
-            imageArray.forEach((image) => {
-                let x = getRandomInt(image.bitmap.width/2);
-                let y = getRandomInt(image.bitmap.height/2);
-                let height = getRandomInt(image.bitmap.height - y - 40) + 40;
-                let width = getRandomInt(image.bitmap.width - x - 40) + 40;
+            for (let i = 0; i < 5; i++) {
+                for (let j = 0; j < 5; j++) {
+                    let xPos = j * 100;
+                    let yPos = i * 100;
 
-                image.crop(x, y, width, height);
-                
-                let compositeX = getRandomInt(imageBase.bitmap.width - image.bitmap.width);
-                let compositeY = getRandomInt(imageBase.bitmap.height - image.bitmap.height);
-                imageBase.composite(image, compositeX, compositeY, {
-                    mode: Jimp.BLEND_MULTIPLY
-                });
-            });
+                    let image = getRandomInt(3);
+                    let currentImage = imageArray[image].clone();
+                    
+                    currentImage.crop(xPos, yPos, 100, 100);
+
+                    imageBase.composite(currentImage, xPos, yPos);
+                }
+            }
             console.log("about to output image...");
             return imageBase.writeAsync('./artifacts/outArtBot/collage.png');
         })

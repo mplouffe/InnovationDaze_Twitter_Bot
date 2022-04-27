@@ -38,11 +38,6 @@
                 "minute": 0,
                 "bot": "RndEncounter",
                 "tweetType": "text"
-            },
-            {   "hour": 23,
-                "minute": 30,
-                "bot": "OutArtBot",
-                "tweetType": "collage"
             }
         ],
         "Tue": [
@@ -62,7 +57,7 @@
                 "hour": 22,
                 "minute": 30,
                 "bot": "OutArtBot",
-                "tweetType": "image"
+                "tweetType": "collage"
             },
             {
                 "hour": 24,
