@@ -55,12 +55,6 @@
             },
             {
                 "hour": 22,
-                "minute": 30,
-                "bot": "OutArtBot",
-                "tweetType": "collage"
-            },
-            {
-                "hour": 24,
                 "minute": 0,
                 "bot": "RndEncounter",
                 "tweetType": "text"
@@ -81,6 +75,12 @@
             },
             {
                 "hour": 22,
+                "minute": 30,
+                "bot": "OutArtBot",
+                "tweetType": "collage"
+            },
+            {
+                "hour": 24,
                 "minute": 0,
                 "bot": "RndEncounter",
                 "tweetType": "text"
