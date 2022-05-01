@@ -2,22 +2,10 @@
     "days": {
         "Sun": [
             {
-                "hour": 9,
-                "minute": 0,
-                "bot": "RndEncounter",
-                "tweetType": "text"
-            },
-            {
-                "hour": 17,
-                "minute": 0,
-                "bot": "RndEncounter",
-                "tweetType": "text"
-            },
-            {
-                "hour": 22,
-                "minute": 0,
-                "bot": "RndEncounter",
-                "tweetType": "text"
+                "hour": 23,
+                "minute": 59,
+                "bot": "OutArtBot",
+                "tweetType": "image"
             }
         ],
         "Mon": [
@@ -109,12 +97,6 @@
         "Fri": [
         ],
         "Sat": [
-            {
-                "hour": 23,
-                "minute": 59,
-                "bot": "OutArtBot",
-                "tweetType": "image"
-            }
         ]
     }
 }

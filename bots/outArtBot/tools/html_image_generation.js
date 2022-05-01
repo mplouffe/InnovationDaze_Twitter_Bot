@@ -31,15 +31,15 @@ const generatePolarElementStyle = (color, point) => {
     let returnString;
 
     // determine random width and height
-    let width = 10;
-    let height = 10;
+    let width = canvasWidth/5;
+    let height = canvasHeight/5;
 
     // determine random position
-    let top = getRandomArbitrary(point.y - 5, point.y + 5);
-    let left = getRandomArbitrary(point.x - 5, point.y + 5);
+    let top = getRandomArbitrary(point.y - 20, point.y + 20);
+    let left = getRandomArbitrary(point.x - 20, point.x + 20);
 
     returnString = 'position:absolute; top:' + top + 'px; left:' + left + 'px; ';
-    returnString += 'background-color:' + color + '; width:' + width + 'px; height: ' + height + 'px;';
+    returnString += 'background-color:' + color + '; width:' + width + 'px; height: ' + height + 'px; opacity: 0.25;';
     
     return returnString;
 }
@@ -126,6 +126,8 @@ const generatePolarElements = (primaryColor, secondaryColor) => {
     for (let i = 0; i< 20; i++) {
         elementsArray.push(generatePolarElement(secondaryColor, polarOpposite));
     }
+
+    return elementsArray;
 }
 
 const generateHtmlImage = (tweetCallback) => {
@@ -135,7 +137,7 @@ const generateHtmlImage = (tweetCallback) => {
     let secondaryColor = getRandomColor();
 
     var complexTag;
-    let randomAbstract = true;
+    let randomAbstract = false;
     if (randomAbstract) {
         complexTag = {
                 tag: 'body',
