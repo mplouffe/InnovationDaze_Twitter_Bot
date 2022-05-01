@@ -107,13 +107,43 @@
             }
         ],
         "Fri": [
+            {
+                "hour": 9,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 17,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 22,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            }
         ],
         "Sat": [
             {
-                "hour": 23,
-                "minute": 59,
-                "bot": "OutArtBot",
-                "tweetType": "image"
+                "hour": 9,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 17,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
+            },
+            {
+                "hour": 22,
+                "minute": 0,
+                "bot": "RndEncounter",
+                "tweetType": "text"
             }
         ]
     }

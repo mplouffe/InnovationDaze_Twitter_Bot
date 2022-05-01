@@ -10,7 +10,7 @@ const generateCanvas = (backgroundColor) => {
     return 'background-color:' + backgroundColor + '; width:' + canvasWidth + 'px; height:' + canvasHeight + 'px;';
 }
 
-const generateElementStyle = (color) => {
+const generateRandomElementStyle = (color) => {
     let returnString;
 
     // determine random width and height
@@ -27,6 +27,23 @@ const generateElementStyle = (color) => {
     return returnString;
 }
 
+const generatePolarElementStyle = (color, point) => {
+    let returnString;
+
+    // determine random width and height
+    let width = 10;
+    let height = 10;
+
+    // determine random position
+    let top = getRandomArbitrary(point.y - 5, point.y + 5);
+    let left = getRandomArbitrary(point.x - 5, point.y + 5);
+
+    returnString = 'position:absolute; top:' + top + 'px; left:' + left + 'px; ';
+    returnString += 'background-color:' + color + '; width:' + width + 'px; height: ' + height + 'px;';
+    
+    return returnString;
+}
+
 const getRandomArbitrary = (min, max) => {
     return Math.floor(Math.random() * (max - min) + min);
 }
@@ -35,11 +52,27 @@ const getRandomColor = () => {
     return 'rgb(' + getRandomArbitrary(0, 255) + ',' + getRandomArbitrary(0, 255) + ',' + getRandomArbitrary(0, 255) + ');';
 }
 
-const generateElement = (color) => {
+const getPolarOppositePoint = (point) => {
+    return {
+        x: canvasWidth - point.x,
+        y: canvasHeight - point.y
+    };
+}
+
+const generateRandomElement = (color) => {
     return {
         tag: 'div',
         properties: {
-            style: generateElementStyle(color)
+            style: generateRandomElementStyle(color)
+        }
+    }
+}
+
+const generatePolarElement = (color, point) => {
+    return {
+        tag: 'div',
+        properties: {
+            style: generatePolarElementStyle(color, point)
         }
     }
 }
@@ -64,16 +97,35 @@ const shuffleArray = (array) => {
 	return array;
 }
 
-const generateElements = (primaryColor, primaryElementsCount, secondaryColor, secondaryElementsCount) => {
+const generateRandomElements = (primaryColor, secondaryColor) => {
+    let primaryElementsCount = getRandomArbitrary(3, 8);
+    let secondaryElementsCount = getRandomArbitrary(3, 8);
+
     let elementsArray = [];
     for (let i = 0; i < primaryElementsCount; i++) {
-        elementsArray.push(generateElement(primaryColor));
+        elementsArray.push(generateRandomElement(primaryColor));
     }
     for (let i = 0; i< secondaryElementsCount; i++) {
-        elementsArray.push(generateElement(secondaryColor));
+        elementsArray.push(generateRandomElement(secondaryColor));
     }
 
     return shuffleArray(elementsArray);
+}
+
+const generatePolarElements = (primaryColor, secondaryColor) => {
+    let randomPoint = {
+        x: getRandomArbitrary(20, canvasWidth-20),
+        y: getRandomArbitrary(20, canvasHeight-20)
+    };
+    let polarOpposite = getPolarOppositePoint(randomPoint);
+
+    let elementsArray = [];
+    for (let i = 0; i < 20; i++) {
+        elementsArray.push(generatePolarElement(primaryColor, randomPoint));
+    }
+    for (let i = 0; i< 20; i++) {
+        elementsArray.push(generatePolarElement(secondaryColor, polarOpposite));
+    }
 }
 
 const generateHtmlImage = (tweetCallback) => {
@@ -82,16 +134,27 @@ const generateHtmlImage = (tweetCallback) => {
     let primaryColor = getRandomColor();
     let secondaryColor = getRandomColor();
 
-    let primaryElementsCount = getRandomArbitrary(3, 8);
-    let secondaryElementsCount = getRandomArbitrary(3, 8);
-
-    var complexTag = {
-        tag: 'body',
-        properties: {
-            style: generateCanvas(backgroundColor),
-        },
-        body: generateElements(primaryColor, primaryElementsCount, secondaryColor, secondaryElementsCount)
-    };
+    var complexTag;
+    let randomAbstract = true;
+    if (randomAbstract) {
+        complexTag = {
+                tag: 'body',
+                properties: {
+                    style: generateCanvas(backgroundColor),
+                },
+                body: generateRandomElements(primaryColor, secondaryColor)
+            };
+    }
+    else
+    {
+        complexTag = {
+            tag: 'body',
+            properties: {
+                style: generateCanvas(backgroundColor),
+            },
+            body: generatePolarElements(primaryColor, secondaryColor)
+        };
+    }
 
     let htmlNode = compile(complexTag);
 
