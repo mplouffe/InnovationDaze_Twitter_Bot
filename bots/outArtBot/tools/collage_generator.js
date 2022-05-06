@@ -9,11 +9,11 @@ var imageGeneratedCallback;
 const generateCollageImage = (callback) => {
     imageGeneratedCallback = callback;
     imageArray = [];
-    numImagesToLoad = 3;
+    numImagesToLoad = 2;
     new Jimp(500, 500, (err, image) => {
         imageBase = image;
     });
-    imageGeneratorToRun = randomSquares;
+    imageGeneratorToRun = parallelLines;
     loadImageArray();
 }
 
@@ -49,6 +49,53 @@ const randomSquares = () => {
 
             imageBase.composite(currentImage, xPos, yPos);
         }
+    }
+}
+
+const parallelLines = () => {
+    let interval = 500 / 20;
+    for (let i = 0; i < 10; i++) {
+        let topImage, bottomImage;
+        if (i % 2 == 0) {
+            topImage = imageArray[0].clone();
+            bottomImage = imageArray[1].clone();
+        }
+        else {
+            topImage = imageArray[1].clone();
+            bottomImage = imageArray[0].clone();
+        }
+
+        let xPos = i * interval;
+        let topYPos = 0;
+        let bottomYPos = 500 - (i * interval);
+
+        topImage.crop(xPos, topYPos, interval, bottomYPos);
+        imageBase.composite(topImage, xPos, topYPos);
+
+        bottomImage.crop(xPos, bottomYPos, interval, 500 - bottomYPos);
+        imageBase.composite(bottomImage, xPos, bottomYPos);
+    }
+
+    for (let i = 10; i < 20; i++) {
+        let topImage, bottomImage;
+        if (i % 2 == 0) {
+            topImage = imageArray[1].clone();
+            bottomImage = imageArray[0].clone();
+        }
+        else {
+            topImage = imageArray[0].clone();
+            bottomImage = imageArray[1].clone();
+        }
+
+        let xPos = i * interval;
+        let topYPos = 0;
+        let bottomYPos = 500 - (i * interval) - interval;
+
+        topImage.crop(xPos, topYPos, interval, 500 - bottomYPos);
+        imageBase.composite(topImage, xPos, topYPos);
+
+        bottomImage.crop(xPos, 500 - bottomYPos, interval, bottomYPos);
+        imageBase.composite(bottomImage, xPos, 500 - bottomYPos);
     }
 }
 
